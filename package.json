@@ -1,0 +1,12 @@
+{
+  "name": "teal-kirby",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "teal-php": "^0.14.0",
+    "xtend": "^4.0.0"
+  }
+}
