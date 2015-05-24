@@ -7,6 +7,7 @@
   "main": "index.js",
   "dependencies": {
     "teal-php": "^0.14.0",
+    "teal-tagify": "0.0.1",
     "xtend": "^4.0.0"
   }
 }
