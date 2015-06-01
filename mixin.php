@@ -4,11 +4,17 @@ public static function kt() {
   return static::$kt;
 }
 
-public static function kirby($vars) {
+public static function kirby($vars = array()) {
   $data = array();
+
+  foreach(site()->content()->data() as $key => $value) {
+    $data[$key] = $data['site' . ucfirst($key)] = $value->toString();
+  }
+
   foreach(page()->content()->data() as $key => $value) {
     $data[$key] = $value->toString();
   }
+
   foreach($vars as $key => $value) {
     if ($value === static::$kt) {
       $value = page()->content()->get($key)->kirbytext();
@@ -18,11 +24,12 @@ public static function kirby($vars) {
     }
     $data[$key] = $value;
   }
+
   $ref = '/' . page()->intendedTemplate() . '.tl';
   if (static::resolve($ref)) {
-    echo static::ref($ref, $data);
+    echo static::render($ref, $data);
   }
   else {
-    echo static::ref('/' . page()->template() . '.tl', $data);
+    echo static::render('/' . page()->template() . '.tl', $data);
   }
 }
