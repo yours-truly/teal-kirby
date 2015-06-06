@@ -27,9 +27,9 @@ public static function kirby($vars = array()) {
 
   $ref = '/' . page()->intendedTemplate() . '.tl';
   if (static::resolve($ref)) {
-    echo static::render($ref, $data);
+    echo tl($ref, $data);
   }
   else {
-    echo static::render('/' . page()->template() . '.tl', $data);
+    echo tl('/' . page()->template() . '.tl', $data);
   }
 }
