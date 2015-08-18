@@ -1,6 +1,6 @@
-var fs = require('fs')
-var teal = require('teal-php')
-var xtend = require('xtend')
+var fs = require('fs');
+var teal = require('teal-php');
+var xtend = require('xtend');
 
 module.exports = function(root, opts) {
   return teal(xtend(opts, {
@@ -14,5 +14,5 @@ module.exports = function(root, opts) {
       kt: 'new stdClass'
     }
   }))
-  .use(require('teal-tagify'))
-}
+  .use(require('teal-tagify'));
+};
