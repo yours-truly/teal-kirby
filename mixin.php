@@ -1,9 +1,3 @@
-private static $kt;
-
-public static function kt() {
-  return static::$kt;
-}
-
 public static function kirby($vars = array()) {
   $data = array();
 
@@ -16,11 +10,8 @@ public static function kirby($vars = array()) {
   }
 
   foreach($vars as $key => $value) {
-    if ($value === static::$kt) {
-      $value = page()->content()->get($key)->kirbytext();
-    }
-    else if (is_callable($value)) {
-      $value = array_map($value, page()->content()->get($key)->yaml());
+    if (is_callable($value)) {
+      $value = call_user_func($value, page()->content()->get($key));
     }
     $data[$key] = $value;
   }
@@ -32,4 +23,10 @@ public static function kirby($vars = array()) {
   else {
     echo tl('/' . page()->template() . '.tl', $data);
   }
+}
+
+public static function mapYaml($fn) {
+  return function($value) use ($fn) {
+    return array_map($fn, $value->yaml());
+  };
 }

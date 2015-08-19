@@ -9,10 +9,7 @@ module.exports = function(root, opts) {
     dest: root,
     tldest: 'site/templates',
     lib: root + '/site/plugins/teal.php',
-    mixin: fs.readFileSync(__dirname + '/mixin.php', 'utf8'),
-    init: {
-      kt: 'new stdClass'
-    }
+    mixin: fs.readFileSync(__dirname + '/mixin.php', 'utf8')
   }))
   .use(require('teal-tagify'));
 };
