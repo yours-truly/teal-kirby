@@ -8,7 +8,7 @@ module.exports = function(root, opts) {
     tlroot: root + '/site/tl',
     dest: root,
     tldest: 'site/templates',
-    lib: root + '/site/plugins/teal.php',
+    lib: root + '/site/plugins/teal/teal.php',
     mixin: fs.readFileSync(__dirname + '/mixin.php', 'utf8')
   }))
   .use(require('teal-tagify'));
